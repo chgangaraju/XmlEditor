@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Login-test" >
+<node_order><![CDATA[0]]></node_order>
+<details><![CDATA[]]> 
+</details>
+<testcase internalid="6" name="Check if user is able to login with invalid User Name and Password">
+	<node_order><![CDATA[100]]></node_order>
+	<externalid><![CDATA[1]]></externalid>
+	<version><![CDATA[2]]></version>
+	<summary><![CDATA[<p><strong>S</strong><strong>teps to reproduce<br />
+</strong></p>
+<p>1 . Open the LeanA3 test link</p>
+<p>2 . Login with abcd / lean123 and check for the error message</p>
+<p><strong>Expected result</strong></p>
+<p>An error message should be displayed saying that &quot;Authentication failed. Please try again. 				 				 			  			&quot;</p>]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
+	<expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
+	<expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="8" name="Check if user is able to login with valid User Name and invalid password">
+	<node_order><![CDATA[101]]></node_order>
+	<externalid><![CDATA[2]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p><strong>Steps to reproduce</strong></p>
+<p>1 . Open the LeanA3 test link</p>
+<p>2 . Login with admin@leantaas.com / abcd and check for the error message</p>
+<p><strong>Expected result</strong></p>
+<p>An error message should be displayed saying that &quot;Authentication failed. Please try again.&quot;</p>]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
+	<expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="10" name="Check for the error message when clicks on LOG IN button with out entering User Name and Password">
+	<node_order><![CDATA[102]]></node_order>
+	<externalid><![CDATA[3]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p><strong>Steps to reproduce</strong></p>
+<p>1 . Open LeanA3 test link</p>
+<p>2 . Click on Login button with out entering the User Name and Password and check for the error message</p>
+<p><strong>Expected result</strong></p>
+<p>An error message should be displayed saying that &quot;Authentication failed. Please try again.&quot;</p>]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
+	<expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+</steps>
+</testcase>
+
+<testcase internalid="12" name="Check if user is able to Login with valid credentails">
+	<node_order><![CDATA[103]]></node_order>
+	<externalid><![CDATA[4]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p><strong>Steps to reproduce</strong></p>
+<p>1 . Open LeanA3 test link</p>
+<p>2 . Login with valid credentails and check if user is able to login inside the application</p>
+<p><strong>Expected result</strong></p>
+<p>User should be able to login inside the application</p>]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
+	<expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+</testsuite>
