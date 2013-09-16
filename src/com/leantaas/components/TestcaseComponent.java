@@ -1,46 +1,37 @@
 package com.leantaas.components;
 
-import com.leantaas.xmlbeans.Testcase;
+import com.leantaas.beans.Testcase;
 
 import javafx.scene.control.TextField;
 
 public class TestcaseComponent {
+	private TextField internalid;
+	private TextField name;
+	private TextField node_order;
+	private TextField externalid;
+	private TextField version;
+	private TextField summary;
+	private TextField preconditions;
+	private TextField execution_type;
+	private TextField importance;
+	private StepsComponent steps;
+
 	public TestcaseComponent() {
 
 	}
 
 	public TestcaseComponent(Testcase testcase) {
-		internalid=new TextField(testcase.getInternalid());
-		name=new TextField(testcase.getName());
-		node_order=new TextField(testcase.getNodeOrder());
-		externalid=new TextField(testcase.getExternalid());
-		version=new TextField(testcase.getVersion());
-		summary=new TextField(testcase.getSummary());
-		preconditions=new TextField(testcase.getPreconditions());
-		execution_type=new TextField(testcase.getExecutionType());
-		importance=new TextField(testcase.getImportance());
-		steps=new StepsComponent(testcase.getSteps());
+		internalid = new TextField(testcase.getInternalid());
+		name = new TextField(testcase.getName());
+		node_order = new TextField(testcase.getNodeOrder());
+		externalid = new TextField(testcase.getExternalid());
+		version = new TextField(testcase.getVersion());
+		summary = new TextField(testcase.getSummary());
+		preconditions = new TextField(testcase.getPreconditions());
+		execution_type = new TextField(testcase.getExecutionType());
+		importance = new TextField(testcase.getImportance());
+		steps = new StepsComponent(testcase.getSteps());
 	}
-
-	TextField internalid;
-
-	TextField name;
-
-	TextField node_order;
-
-	TextField externalid;
-
-	TextField version;
-
-	TextField summary;
-
-	TextField preconditions;
-
-	TextField execution_type;
-
-	TextField importance;
-
-	StepsComponent steps;
 
 	public TextField getInternalid() {
 		return internalid;

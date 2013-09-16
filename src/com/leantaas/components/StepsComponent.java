@@ -2,19 +2,19 @@ package com.leantaas.components;
 
 import javax.xml.bind.annotation.XmlElement;
 
-import com.leantaas.xmlbeans.Steps;
-
+import com.leantaas.beans.Steps;
 
 public class StepsComponent {
-	StepComponent[] step;
+	private StepComponent[] step;
+
 	public StepsComponent() {
-		
+
 	}
-	
+
 	public StepsComponent(Steps steps) {
-		step=new StepComponent[steps.getStep().length];
-		for(int i=0;i<steps.getStep().length;i++) {
-			step[i]=new StepComponent(steps.getStep()[i]);
+		step = new StepComponent[steps.getStep().length];
+		for (int i = 0; i < steps.getStep().length; i++) {
+			step[i] = new StepComponent(steps.getStep()[i]);
 		}
 	}
 

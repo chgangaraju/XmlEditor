@@ -8,7 +8,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import com.leantaas.xmlbeans.Testsuite;
+import com.leantaas.beans.Testsuite;
 import com.sun.xml.internal.bind.marshaller.CharacterEscapeHandler;
 
 public class JAXBExample {

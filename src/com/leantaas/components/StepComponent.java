@@ -2,27 +2,25 @@ package com.leantaas.components;
 
 import javafx.scene.control.TextField;
 
-import com.leantaas.xmlbeans.Step;
+import com.leantaas.beans.Step;
 
 public class StepComponent {
+	private TextField step_number;
+	private TextField actions;
+	private TextField expectedresults;
+	private TextField execution_type;
+
 	public StepComponent() {
-		
+
 	}
+
 	public StepComponent(Step step) {
-		step_number=new TextField(step.getStepNumber());
-		actions=new TextField(step.getActions());
-		expectedresults=new TextField(step.getExpectedresults());
-		execution_type= new TextField(step.getExecutionType());
-		
+		step_number = new TextField(step.getStepNumber());
+		actions = new TextField(step.getActions());
+		expectedresults = new TextField(step.getExpectedresults());
+		execution_type = new TextField(step.getExecutionType());
+
 	}
-
-	TextField step_number;
-
-	TextField actions;
-
-	TextField expectedresults;
-
-	TextField execution_type;
 
 	public TextField getStepNumber() {
 		return step_number;

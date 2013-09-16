@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<testsuite name="Login-test">
+<testsuite name="Login-test12">
     <node_order><![CDATA[0]]></node_order>
     <details><![CDATA[ ]]></details>
     <testcase internalid="6" name="Check if user is able to login with invalid User Name and Password">
@@ -9,14 +9,8 @@
         <summary><![CDATA[<p><strong>S</strong><strong>teps to reproduce<br /></strong></p><p>1 . Open the LeanA3 test link</p><p>2 . Login with abcd / lean123 and check for the error message</p><p><strong>Expected result</strong></p><p>An error message should be displayed saying that &quot;Authentication failed. Please try again.     &quot;</p>]]></summary>
         <preconditions><![CDATA[]]></preconditions>
         <execution_type><![CDATA[1]]></execution_type>
-        <importance><![CDATA[22]]></importance>
+        <importance><![CDATA[2]]></importance>
         <steps>
-            <step>
-                <step_number><![CDATA[as]]></step_number>
-                <actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
-                <expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
-                <execution_type><![CDATA[1]]></execution_type>
-            </step>
             <step>
                 <step_number><![CDATA[1]]></step_number>
                 <actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>

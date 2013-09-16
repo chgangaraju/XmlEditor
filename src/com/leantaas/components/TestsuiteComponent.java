@@ -2,9 +2,13 @@ package com.leantaas.components;
 
 import javafx.scene.control.TextField;
 
-import com.leantaas.xmlbeans.Testsuite;
+import com.leantaas.beans.Testsuite;
 
 public class TestsuiteComponent {
+	private TextField name;
+	private TextField node_order;
+	private TextField details;
+	private TestcaseComponent[] testcase;
 
 	public TestsuiteComponent() {
 
@@ -14,19 +18,11 @@ public class TestsuiteComponent {
 		name = new TextField(testsuite.getName());
 		node_order = new TextField(testsuite.getNodeOrder());
 		details = new TextField(testsuite.getDetails());
-		testcase=new TestcaseComponent[testsuite.getTestcase().length];
-		for (int i = 0; i < testsuite.getTestcase().length; i++) {		
+		testcase = new TestcaseComponent[testsuite.getTestcase().length];
+		for (int i = 0; i < testsuite.getTestcase().length; i++) {
 			testcase[i] = new TestcaseComponent(testsuite.getTestcase()[i]);
 		}
 	}
-
-	TextField name;
-
-	TextField node_order;
-
-	TextField details;
-
-	TestcaseComponent[] testcase;
 
 	public TextField getName() {
 		return name;
