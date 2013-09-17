@@ -1,4 +1,4 @@
-package com.leantaas.javafx;
+package com.leantaas.xmlhelpers;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import javax.xml.bind.Unmarshaller;
 import com.leantaas.beans.Testsuite;
 import com.sun.xml.internal.bind.marshaller.CharacterEscapeHandler;
 
-public class JAXBExample {
+public class XMLReader {
 	public static Testsuite getObjectFromXml() throws Exception {
 		File file = new File("src/sample.xml");
 		JAXBContext jaxbContext = JAXBContext.newInstance(Testsuite.class);

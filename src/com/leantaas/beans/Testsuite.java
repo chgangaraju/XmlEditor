@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.leantaas.xmlhelpers.AdapterCDATA;
+
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Testsuite {

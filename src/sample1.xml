@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <testsuite name="Login-test">
     <node_order><![CDATA[0]]></node_order>
-    <details><![CDATA[ ]]></details>
+    <details><![CDATA[login test]]></details>
     <testcase internalid="6" name="Check if user is able to login with invalid User Name and Password">
         <node_order><![CDATA[100]]></node_order>
         <externalid><![CDATA[1]]></externalid>
@@ -17,18 +17,6 @@
                 <expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
                 <execution_type><![CDATA[1]]></execution_type>
             </step>
-            <step>
-                <step_number><![CDATA[]]></step_number>
-                <actions><![CDATA[]]></actions>
-                <expectedresults><![CDATA[]]></expectedresults>
-                <execution_type><![CDATA[]]></execution_type>
-            </step>
-            <step>
-                <step_number><![CDATA[]]></step_number>
-                <actions><![CDATA[]]></actions>
-                <expectedresults><![CDATA[]]></expectedresults>
-                <execution_type><![CDATA[]]></execution_type>
-            </step>
         </steps>
     </testcase>
     <testcase internalid="8" name="Check if user is able to login with valid User Name and invalid password">
@@ -39,32 +27,7 @@
         <preconditions><![CDATA[]]></preconditions>
         <execution_type><![CDATA[1]]></execution_type>
         <importance><![CDATA[2]]></importance>
-        <steps>
-            <step>
-                <step_number><![CDATA[]]></step_number>
-                <actions><![CDATA[]]></actions>
-                <expectedresults><![CDATA[]]></expectedresults>
-                <execution_type><![CDATA[]]></execution_type>
-            </step>
-            <step>
-                <step_number><![CDATA[]]></step_number>
-                <actions><![CDATA[]]></actions>
-                <expectedresults><![CDATA[]]></expectedresults>
-                <execution_type><![CDATA[]]></execution_type>
-            </step>
-            <step>
-                <step_number><![CDATA[]]></step_number>
-                <actions><![CDATA[]]></actions>
-                <expectedresults><![CDATA[]]></expectedresults>
-                <execution_type><![CDATA[]]></execution_type>
-            </step>
-            <step>
-                <step_number><![CDATA[]]></step_number>
-                <actions><![CDATA[]]></actions>
-                <expectedresults><![CDATA[]]></expectedresults>
-                <execution_type><![CDATA[]]></execution_type>
-            </step>
-        </steps>
+        <steps/>
     </testcase>
     <testcase internalid="10" name="Check for the error message when clicks on LOG IN button with out entering User Name and Password">
         <node_order><![CDATA[102]]></node_order>
@@ -85,5 +48,22 @@
         <execution_type><![CDATA[1]]></execution_type>
         <importance><![CDATA[2]]></importance>
         <steps/>
+    </testcase>
+    <testcase internalid="1" name="new test">
+        <node_order><![CDATA[2]]></node_order>
+        <externalid><![CDATA[3]]></externalid>
+        <version><![CDATA[4]]></version>
+        <summary><![CDATA[5]]></summary>
+        <preconditions><![CDATA[6]]></preconditions>
+        <execution_type><![CDATA[7]]></execution_type>
+        <importance><![CDATA[8]]></importance>
+        <steps>
+            <step>
+                <step_number><![CDATA[1]]></step_number>
+                <actions><![CDATA[2]]></actions>
+                <expectedresults><![CDATA[3]]></expectedresults>
+                <execution_type><![CDATA[4]]></execution_type>
+            </step>
+        </steps>
     </testcase>
 </testsuite>

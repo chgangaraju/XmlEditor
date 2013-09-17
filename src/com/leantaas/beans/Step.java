@@ -4,6 +4,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.leantaas.xmlhelpers.AdapterCDATA;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Step {
 

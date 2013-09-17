@@ -1,4 +1,4 @@
-package com.leantaas.beans;
+package com.leantaas.xmlhelpers;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 

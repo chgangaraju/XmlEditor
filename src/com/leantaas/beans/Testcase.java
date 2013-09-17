@@ -5,6 +5,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.leantaas.xmlhelpers.AdapterCDATA;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Testcase {
 	@XmlAttribute
