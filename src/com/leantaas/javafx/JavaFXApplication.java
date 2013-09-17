@@ -54,23 +54,18 @@ public class JavaFXApplication extends Application {
 					createTestcase(testsuite.getTestcase().get(i), component
 							.getTestcase().get(i)));
 		}
-		Button[] testcaseAddButttons = new Button[testsuite.getTestcase().size()];
-		for (int i = 0; i < testcaseAddButttons.length; i++) {
-			testcaseAddButttons[i]=component.getTestcase().get(i).getButton();
-			testcaseAddButttons[i].setOnAction(
-					new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent e) {
-							Testcase testcase = new Testcase();
-							TestcaseComponent testcaseComponent = new TestcaseComponent();
-							testsuite.addTestcase(testcase);
-							component.addTestcase(testcaseComponent);
-							testsuiteVBox.getChildren()
-									.add(createTestcase(testcase,
-											testcaseComponent));
-						}
-					});
-		}
+		Button testsuiteAddButtton = component.getButton();
+		testsuiteAddButtton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				Testcase testcase = new Testcase();
+				TestcaseComponent testcaseComponent = new TestcaseComponent();
+				testsuite.addTestcase(testcase);
+				component.addTestcase(testcaseComponent);
+				testsuiteVBox.getChildren().add(
+						createTestcase(testcase, testcaseComponent));
+			}
+		});
 		Button button = new Button("Submit");
 		button.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -85,7 +80,10 @@ public class JavaFXApplication extends Application {
 		scrollpane.setContent(testsuiteVBox);
 		scrollpane.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
 		scrollpane.setMinSize(680, 700);
-		vbox.getChildren().add(new TitledPane("Testsuite", scrollpane));
+		Label testcaseLabel = new Label("Testsuite");
+		CustomTitledPane titledPane = new CustomTitledPane(scrollpane,
+				testcaseLabel, component.getButton(), 560);
+		vbox.getChildren().add(titledPane);
 		vbox.getChildren().add(hbox);
 		return vbox;
 	}
@@ -130,13 +128,14 @@ public class JavaFXApplication extends Application {
 		}
 		try {
 			JAXBExample.setObjectToXml(testsuite);
-			System.out.println("Changes are submitted to XML file");
+			System.out.println("Changes are written to XML file");
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 	}
 
-	private VBox createTestcase(final Testcase testcase, final TestcaseComponent component) {
+	private VBox createTestcase(final Testcase testcase,
+			final TestcaseComponent component) {
 		final VBox vbox = new VBox();
 		final VBox TestcaseVBox = new VBox();
 		CustomGridPane grid = new CustomGridPane();
@@ -171,34 +170,25 @@ public class JavaFXApplication extends Application {
 
 		final VBox stepVBox = new VBox();
 		for (int i = 0; i < testcase.getSteps().getStep().size(); i++) {
-			stepVBox.getChildren().add(
-					createStep(component.getSteps().getStep().get(i)));
+			stepVBox.getChildren().add(createStep(component.getSteps().getStep().get(i)));
 		}
-		Button[] stepAddButttons = new Button[testcase.getSteps().getStep().size()];
-		for (int i = 0; i < stepAddButttons.length; i++) {
-			stepAddButttons[i]=component.getSteps().getStep().get(i).getButton();
-			stepAddButttons[i].setOnAction(
-					new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent e) {
-							Step step = new Step();
-							StepComponent stepComponent = new StepComponent();
-							testcase.getSteps().addStep(step);
-							component.getSteps().addStep(stepComponent);
-							stepVBox.getChildren()
-									.add(createStep(stepComponent));
-							System.out.println("success");
-						}
-					});
-		}
-		TitledPane stepPane = new TitledPane("Steps", stepVBox);
+		Button stepAddButtton = component.getSteps().getButton();
+		stepAddButtton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				Step step = new Step();
+				StepComponent stepComponent = new StepComponent();
+				testcase.getSteps().addStep(step);
+				component.getSteps().addStep(stepComponent);
+				stepVBox.getChildren().add(createStep(stepComponent));
+			}
+		});
+		Label testcaseLabel = new Label("Steps");
+		CustomTitledPane stepPane = new CustomTitledPane(stepVBox,
+				testcaseLabel, component.getSteps().getButton(), 550);
 		TestcaseVBox.getChildren().add(stepPane);
-		Insets insets = new Insets(5, 5, 5, 5);
-		VBox.setMargin(vbox, insets);
-		Label testcaseLabel = new Label("Testcase");
-		CustomTitledPane titledPane = new CustomTitledPane(TestcaseVBox,
-				testcaseLabel, component.getButton(), 530);
-		titledPane.setMinWidth(600);
+		VBox.setMargin(vbox, new Insets(5));
+		TitledPane titledPane = new TitledPane("Testcase", TestcaseVBox);
 		vbox.getChildren().add(titledPane);
 		return vbox;
 	}
@@ -218,9 +208,8 @@ public class JavaFXApplication extends Application {
 
 		grid.add(new Label("execution_type"), 0, 3);
 		grid.add(component.getExecutionType(), 1, 3);
-		Label testcaseLabel = new Label("Step");
-		CustomTitledPane titledPane = new CustomTitledPane(grid, testcaseLabel,
-				component.getButton(), 550);
+		
+		TitledPane titledPane = new TitledPane("Step", grid);
 		vbox.getChildren().setAll(titledPane);
 		return vbox;
 	}

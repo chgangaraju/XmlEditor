@@ -28,9 +28,9 @@ public class JAXBExample {
 		jaxbMarshaller.setProperty(CharacterEscapeHandler.class.getName(),
                 new CharacterEscapeHandler() {
                     @Override
-                    public void escape(char[] ac, int i, int j, boolean flag,
+                    public void escape(char[] c, int i, int j, boolean flag,
                             Writer writer) throws IOException {
-                        writer.write(ac, i, j);
+                        writer.write(c, i, j);
                     }
                 });
 		jaxbMarshaller.marshal(testsuite, file);
