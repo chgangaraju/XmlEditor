@@ -1,17 +1,26 @@
 package com.leantaas.beans;
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlElement;
 
-
 public class Steps {
-	private Step[] step;
+	private ArrayList<Step> step;
 
-	public Step[] getStep() {
+	public Steps() {
+		step = new ArrayList<Step>();
+	}
+
+	public ArrayList<Step> getStep() {
 		return step;
 	}
 
 	@XmlElement
-	public void setStep(Step[] step) {
+	public void setStep(ArrayList<Step> step) {
 		this.step = step;
+	}
+
+	public void addStep(Step step) {
+		this.step.add(step);
 	}
 }

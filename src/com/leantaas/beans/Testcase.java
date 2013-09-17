@@ -36,6 +36,19 @@ public class Testcase {
 
 	private Steps steps;
 
+	public Testcase() {
+		internalid = new String();
+		name = new String();
+		node_order = new String();
+		externalid = new String();
+		version = new String();
+		summary = new String();
+		preconditions = new String();
+		execution_type = new String();
+		importance = new String();
+		steps=new Steps();
+	}
+
 	public String getInternalid() {
 		return internalid;
 	}

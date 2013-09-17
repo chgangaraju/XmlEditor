@@ -18,6 +18,13 @@ public class Step {
 
 	@XmlJavaTypeAdapter(AdapterCDATA.class)
 	private String execution_type;
+	
+	public Step() {
+		step_number=new String();
+		actions=new String();
+		execution_type=new String();
+		expectedresults=new String();
+	}
 
 	public String getStepNumber() {
 		return step_number;

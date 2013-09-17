@@ -1,5 +1,7 @@
 package com.leantaas.beans;
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -18,7 +20,15 @@ public class Testsuite {
 	@XmlJavaTypeAdapter(AdapterCDATA.class)
 	private String details;
 
-	private Testcase[] testcase;
+	private ArrayList<Testcase> testcase;
+
+	public Testsuite() {
+		name = new String();
+		node_order = new String();
+		details = new String();
+		details = new String();
+		testcase = new ArrayList<Testcase>();
+	}
 
 	public String getName() {
 		return name;
@@ -44,11 +54,15 @@ public class Testsuite {
 		this.details = details;
 	}
 
-	public Testcase[] getTestcase() {
+	public ArrayList<Testcase> getTestcase() {
 		return testcase;
 	}
 
-	public void setTestcase(Testcase[] testcase) {
+	public void setTestcase(ArrayList<Testcase> testcase) {
 		this.testcase = testcase;
+	}
+
+	public void addTestcase(Testcase testcase) {
+		this.testcase.add(testcase);
 	}
 }

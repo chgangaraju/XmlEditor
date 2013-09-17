@@ -12,10 +12,10 @@ public class CustomTitledPane extends TitledPane {
 	public CustomTitledPane() {
 		super();
 	}
-	public CustomTitledPane(Node node,Label label,Button button) {
+	public CustomTitledPane(Node node,Label label,Button button,int space) {
 		super("",node);
 		this.setAnimated(false);
-		this.setGraphic(HBoxBuilder.create().spacing(500)
+		this.setGraphic(HBoxBuilder.create().spacing(space)
 				.alignment(Pos.CENTER_RIGHT).styleClass("header")
 				.children(label, button)
 				.build());

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<testsuite name="Login-test12">
+<testsuite name="Login-test1">
     <node_order><![CDATA[0]]></node_order>
     <details><![CDATA[ ]]></details>
     <testcase internalid="6" name="Check if user is able to login with invalid User Name and Password">
@@ -27,14 +27,7 @@
         <preconditions><![CDATA[]]></preconditions>
         <execution_type><![CDATA[1]]></execution_type>
         <importance><![CDATA[2]]></importance>
-        <steps>
-            <step>
-                <step_number><![CDATA[1]]></step_number>
-                <actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
-                <expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
-                <execution_type><![CDATA[1]]></execution_type>
-            </step>
-        </steps>
+        <steps/>
     </testcase>
     <testcase internalid="10" name="Check for the error message when clicks on LOG IN button with out entering User Name and Password">
         <node_order><![CDATA[102]]></node_order>
@@ -44,14 +37,7 @@
         <preconditions><![CDATA[]]></preconditions>
         <execution_type><![CDATA[1]]></execution_type>
         <importance><![CDATA[2]]></importance>
-        <steps>
-            <step>
-                <step_number><![CDATA[1]]></step_number>
-                <actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
-                <expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
-                <execution_type><![CDATA[1]]></execution_type>
-            </step>
-        </steps>
+        <steps/>
     </testcase>
     <testcase internalid="12" name="Check if user is able to Login with valid credentails">
         <node_order><![CDATA[103]]></node_order>
@@ -61,13 +47,6 @@
         <preconditions><![CDATA[]]></preconditions>
         <execution_type><![CDATA[1]]></execution_type>
         <importance><![CDATA[2]]></importance>
-        <steps>
-            <step>
-                <step_number><![CDATA[1]]></step_number>
-                <actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
-                <expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
-                <execution_type><![CDATA[1]]></execution_type>
-            </step>
-        </steps>
+        <steps/>
     </testcase>
 </testsuite>

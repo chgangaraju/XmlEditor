@@ -38,14 +38,7 @@
 	<preconditions><![CDATA[]]></preconditions>
 	<execution_type><![CDATA[1]]></execution_type>
 	<importance><![CDATA[2]]></importance>
-<steps>
-<step>
-	<step_number><![CDATA[1]]></step_number>
-	<actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
-	<expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
-	<execution_type><![CDATA[1]]></execution_type>
-</step>
-</steps>
+
 </testcase>
 
 <testcase internalid="10" name="Check for the error message when clicks on LOG IN button with out entering User Name and Password">
@@ -60,14 +53,7 @@
 	<preconditions><![CDATA[]]></preconditions>
 	<execution_type><![CDATA[1]]></execution_type>
 	<importance><![CDATA[2]]></importance>
-<steps>
-<step>
-	<step_number><![CDATA[1]]></step_number>
-	<actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
-	<expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
-	<execution_type><![CDATA[1]]></execution_type>
-</step>
-</steps>
+
 </testcase>
 
 <testcase internalid="12" name="Check if user is able to Login with valid credentails">
@@ -82,13 +68,6 @@
 	<preconditions><![CDATA[]]></preconditions>
 	<execution_type><![CDATA[1]]></execution_type>
 	<importance><![CDATA[2]]></importance>
-<steps>
-<step>
-	<step_number><![CDATA[1]]></step_number>
-	<actions><![CDATA[<p>Open A3 Creator URL</p>]]></actions>
-	<expectedresults><![CDATA[<p>Should open the A3 Creator Login page</p>]]></expectedresults>
-	<execution_type><![CDATA[1]]></execution_type>
-</step>
-</steps>
+
 </testcase>
 </testsuite>
