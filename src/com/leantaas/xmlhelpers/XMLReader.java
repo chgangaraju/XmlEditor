@@ -12,20 +12,24 @@ import com.leantaas.beans.Testsuite;
 import com.sun.xml.internal.bind.marshaller.CharacterEscapeHandler;
 
 public class XMLReader {
-	public static Testsuite getObjectFromXml() throws Exception {
-		File file = new File("src/sample.xml");
+	public static Testsuite getObjectFromXml(File file) throws Exception {
+		/*Properties properties=new Properties();
+		properties.load(new FileInputStream("src/files.properties"));
+		File file = new File(properties.getProperty("readFile"));*/
 		JAXBContext jaxbContext = JAXBContext.newInstance(Testsuite.class);
-		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-		Testsuite testsuite =  (Testsuite) jaxbUnmarshaller.unmarshal(file);
+		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+		Testsuite testsuite =  (Testsuite) unmarshaller.unmarshal(file);
 		return testsuite;
 	}
 
-	public static void setObjectToXml(Testsuite testsuite) throws Exception {
-		File file = new File("src/sample1.xml");
+	public static void setObjectToXml(Testsuite testsuite,File file) throws Exception {
+		/*Properties properties=new Properties();
+		properties.load(new FileInputStream("src/files.properties"));
+		File file = new File(properties.getProperty("writeFile"));*/
 		JAXBContext jaxbContext = JAXBContext.newInstance(Testsuite.class);
-		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		jaxbMarshaller.setProperty(CharacterEscapeHandler.class.getName(),
+		Marshaller marshaller = jaxbContext.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		marshaller.setProperty(CharacterEscapeHandler.class.getName(),
                 new CharacterEscapeHandler() {
                     @Override
                     public void escape(char[] c, int i, int j, boolean flag,
@@ -33,6 +37,6 @@ public class XMLReader {
                         writer.write(c, i, j);
                     }
                 });
-		jaxbMarshaller.marshal(testsuite, file);
+		marshaller.marshal(testsuite, file);
 	}
 }

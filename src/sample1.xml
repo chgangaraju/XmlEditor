@@ -6,7 +6,7 @@
         <node_order><![CDATA[100]]></node_order>
         <externalid><![CDATA[1]]></externalid>
         <version><![CDATA[2]]></version>
-        <summary><![CDATA[<html><head></head><body contenteditable="true"><p style="text-align: left;"><strong>S</strong><strong>teps to reproduce<br>
+        <summary><![CDATA[<html><head></head><body contenteditable="true"><p><strong>S</strong><strong>teps to reproduce<br>
 </strong></p>
 <p>1 . Open the LeanA3 test link</p>
 <p>2 . Login with abcd / lean123 and check for the error message</p>
@@ -18,7 +18,7 @@
         <steps>
             <step>
                 <step_number><![CDATA[1]]></step_number>
-                <actions><![CDATA[<html><head></head><body contenteditable="true"><p style="text-align: left;">Open A3 Creator URL</p></body></html>]]></actions>
+                <actions><![CDATA[<html><head></head><body contenteditable="true"><p>Open A3 Creator URL</p></body></html>]]></actions>
                 <expectedresults><![CDATA[<html><head></head><body contenteditable="true"><p>Should open the A3 Creator Login page</p></body></html>]]></expectedresults>
                 <execution_type><![CDATA[1]]></execution_type>
             </step>
@@ -64,6 +64,13 @@
         <preconditions><![CDATA[]]></preconditions>
         <execution_type><![CDATA[1]]></execution_type>
         <importance><![CDATA[2]]></importance>
-        <steps/>
+        <steps>
+            <step>
+                <step_number><![CDATA[]]></step_number>
+                <actions><![CDATA[<html><head></head><body contenteditable="true"></body></html>]]></actions>
+                <expectedresults><![CDATA[<html><head></head><body contenteditable="true"></body></html>]]></expectedresults>
+                <execution_type><![CDATA[]]></execution_type>
+            </step>
+        </steps>
     </testcase>
 </testsuite>
