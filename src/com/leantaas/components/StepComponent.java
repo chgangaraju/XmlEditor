@@ -1,26 +1,33 @@
 package com.leantaas.components;
 
 import javafx.scene.control.TextField;
+import javafx.scene.web.HTMLEditor;
 
 import com.leantaas.beans.Step;
 
 public class StepComponent {
 	private TextField step_number;
-	private TextField actions;
-	private TextField expectedresults;
+	private HTMLEditor actions;
+	private HTMLEditor expectedresults;
 	private TextField execution_type;
 
 	public StepComponent() {
 		step_number = new TextField("");
-		actions = new TextField("");
-		expectedresults = new TextField("");
+		actions = new HTMLEditor();
+		actions.setMaxSize(650, 200);
+		expectedresults = new HTMLEditor();
+		expectedresults.setMaxSize(650, 200);
 		execution_type = new TextField("");
 	}
 
 	public StepComponent(Step step) {
 		step_number = new TextField(step.getStepNumber());
-		actions = new TextField(step.getActions());
-		expectedresults = new TextField(step.getExpectedresults());
+		actions = new HTMLEditor();
+		actions.setHtmlText(step.getActions());
+		actions.setMaxSize(650, 200);
+		expectedresults = new HTMLEditor();
+		expectedresults.setHtmlText(step.getExpectedresults());
+		expectedresults.setMaxSize(650, 200);
 		execution_type = new TextField(step.getExecutionType());
 	}
 
@@ -32,19 +39,19 @@ public class StepComponent {
 		this.step_number = step_number;
 	}
 
-	public TextField getActions() {
+	public HTMLEditor getActions() {
 		return actions;
 	}
 
-	public void setActions(TextField actions) {
+	public void setActions(HTMLEditor actions) {
 		this.actions = actions;
 	}
 
-	public TextField getExpectedresults() {
+	public HTMLEditor getExpectedresults() {
 		return expectedresults;
 	}
 
-	public void setExpectedresults(TextField expectedresults) {
+	public void setExpectedresults(HTMLEditor expectedresults) {
 		this.expectedresults = expectedresults;
 	}
 

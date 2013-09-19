@@ -41,7 +41,7 @@ public class JavaFXApplication extends Application {
 		Testsuite testsuite = XMLReader.getObjectFromXml();
 		VBox vbox = createTestsuite(testsuite);
 		primaryStage.setTitle("XML Editor");
-		primaryStage.setScene(new Scene(vbox, 690, 770));
+		primaryStage.setScene(new Scene(vbox, 890, 770));
 		primaryStage.show();
 		dialog = new AlertDialog(primaryStage,"Changes are written to XML file");
 	}
@@ -58,9 +58,9 @@ public class JavaFXApplication extends Application {
 		ScrollPane scrollpane = new ScrollPane();
 		scrollpane.setContent(testsuiteVBox);
 		scrollpane.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
-		scrollpane.setMinSize(680, 700);
+		scrollpane.setMinSize(880, 700);
 		Label testsuiteLabel = new Label("Testsuite");
-		CustomTitledPane titledPane = new CustomTitledPane(scrollpane,testsuiteLabel, component.getButton(), 560);
+		CustomTitledPane titledPane = new CustomTitledPane(scrollpane,testsuiteLabel, component.getButton(), 760);
 		HBox hbox=createSubmitButton(testsuite, component);
 		final VBox vbox = new VBox();
 		vbox.getChildren().add(titledPane);
@@ -123,14 +123,14 @@ public class JavaFXApplication extends Application {
 			testcase.setName(component.getName().getText().toString());
 			testcase.setNodeOrder(component.getNodeOrder().getText().toString());
 			testcase.setPreconditions(component.getPreconditions().getText().toString());
-			testcase.setSummary(component.getSummary().getText().toString());
+			testcase.setSummary(component.getSummary().getHtmlText().toString());
 			testcase.setVersion(component.getVersion().getText().toString());
 			for (int j = 0; j < testcase.getSteps().getStep().size(); j++) {
 				Step step = testcase.getSteps().getStep().get(j);
 				StepComponent stepComponent = component.getSteps().getStep().get(j);
-				step.setActions(stepComponent.getActions().getText().toString());
+				step.setActions(stepComponent.getActions().getHtmlText().toString());
 				step.setExecutionType(stepComponent.getExecutionType().getText().toString());
-				step.setExpectedresults(stepComponent.getExpectedresults().getText().toString());
+				step.setExpectedresults(stepComponent.getExpectedresults().getHtmlText().toString());
 				step.setStepNumber(stepComponent.getStepNumber().getText().toString());
 			}
 		}
@@ -149,7 +149,7 @@ public class JavaFXApplication extends Application {
 		TestcaseVBox.getChildren().add(grid);
 		final VBox stepVBox =createStep(testcase.getSteps(), component.getSteps());
 		Label stepLabel = new Label("Steps");
-		CustomTitledPane stepPane = new CustomTitledPane(stepVBox,stepLabel, component.getSteps().getButton(), 550);
+		CustomTitledPane stepPane = new CustomTitledPane(stepVBox,stepLabel, component.getSteps().getButton(), 750);
 		TestcaseVBox.getChildren().add(stepPane);
 		VBox.setMargin(vbox, new Insets(5));
 		TitledPane titledPane = new TitledPane("Testcase", TestcaseVBox);

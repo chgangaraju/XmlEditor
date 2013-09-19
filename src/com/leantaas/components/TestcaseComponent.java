@@ -1,6 +1,7 @@
 package com.leantaas.components;
 
 import javafx.scene.control.TextField;
+import javafx.scene.web.HTMLEditor;
 
 import com.leantaas.beans.Testcase;
 
@@ -10,7 +11,7 @@ public class TestcaseComponent {
 	private TextField node_order;
 	private TextField externalid;
 	private TextField version;
-	private TextField summary;
+	private HTMLEditor summary;
 	private TextField preconditions;
 	private TextField execution_type;
 	private TextField importance;
@@ -22,7 +23,8 @@ public class TestcaseComponent {
 		node_order = new TextField();
 		externalid = new TextField();
 		version = new TextField();
-		summary = new TextField();
+		summary = new HTMLEditor();
+		summary.setMaxSize(650, 200);
 		preconditions = new TextField();
 		execution_type = new TextField();
 		importance = new TextField();
@@ -35,7 +37,9 @@ public class TestcaseComponent {
 		node_order = new TextField(testcase.getNodeOrder());
 		externalid = new TextField(testcase.getExternalid());
 		version = new TextField(testcase.getVersion());
-		summary = new TextField(testcase.getSummary());
+		summary = new HTMLEditor();
+		summary.setMaxSize(650, 200);
+		summary.setHtmlText(testcase.getSummary());
 		preconditions = new TextField(testcase.getPreconditions());
 		execution_type = new TextField(testcase.getExecutionType());
 		importance = new TextField(testcase.getImportance());
@@ -82,11 +86,11 @@ public class TestcaseComponent {
 		this.version = version;
 	}
 
-	public TextField getSummary() {
+	public HTMLEditor getSummary() {
 		return summary;
 	}
 
-	public void setSummary(TextField summary) {
+	public void setSummary(HTMLEditor summary) {
 		this.summary = summary;
 	}
 
