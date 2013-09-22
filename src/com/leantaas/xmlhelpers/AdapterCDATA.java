@@ -8,6 +8,7 @@ public class AdapterCDATA extends XmlAdapter<String, String> {
 	public String marshal(String string) throws Exception {
 		string=string.replace("<html><head></head><body contenteditable=\"true\">", "");
 		string=string.replace("style=\"text-align: left;\"", "");
+		string=string.replace("</body></html>", "");
 		return "<![CDATA[" + string + "]]>";
 	}
 
