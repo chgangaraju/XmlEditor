@@ -2,37 +2,6 @@
 <testsuite name="Login-test">
     <node_order><![CDATA[0]]></node_order>
     <details><![CDATA[]]></details>
-    <testcase internalid="" name="">
-        <node_order><![CDATA[]]></node_order>
-        <externalid><![CDATA[]]></externalid>
-        <version><![CDATA[]]></version>
-        <summary><![CDATA[]]></summary>
-        <preconditions><![CDATA[]]></preconditions>
-        <execution_type><![CDATA[]]></execution_type>
-        <importance><![CDATA[]]></importance>
-        <steps/>
-    </testcase>
-    <testcase internalid="8" name="Check if user is able to login with valid User Name and invalid password">
-        <node_order><![CDATA[101]]></node_order>
-        <externalid><![CDATA[2]]></externalid>
-        <version><![CDATA[1]]></version>
-        <summary><![CDATA[<p><strong>Steps to reproduce</strong></p>
-<p>1 . Open the LeanA3 test link</p>
-<p>2 . Login with admin@leantaas.com / abcd and check for the error message</p>
-<p><strong>Expected result</strong></p>
-<p>An error message should be displayed saying that "Authentication failed. Please try again."</p>]]></summary>
-        <preconditions><![CDATA[]]></preconditions>
-        <execution_type><![CDATA[1]]></execution_type>
-        <importance><![CDATA[2]]></importance>
-        <steps>
-            <step>
-                <step_number><![CDATA[2]]></step_number>
-                <actions><![CDATA[]]></actions>
-                <expectedresults><![CDATA[]]></expectedresults>
-                <execution_type><![CDATA[]]></execution_type>
-            </step>
-        </steps>
-    </testcase>
     <testcase internalid="6" name="Check if user is able to login with invalid User Name and Password">
         <node_order><![CDATA[100]]></node_order>
         <externalid><![CDATA[1]]></externalid>

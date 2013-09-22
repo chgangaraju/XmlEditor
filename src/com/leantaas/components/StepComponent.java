@@ -1,17 +1,20 @@
 package com.leantaas.components;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.web.HTMLEditor;
 
 import com.leantaas.beans.Step;
 
 public class StepComponent {
+	private Button button;
 	private TextField step_number;
 	private HTMLEditor actions;
 	private HTMLEditor expectedresults;
 	private TextField execution_type;
 
 	public StepComponent() {
+		setButton(new Button("-"));
 		step_number = new TextField("");
 		actions = new HTMLEditor();
 		actions.setMaxSize(650, 200);
@@ -21,6 +24,7 @@ public class StepComponent {
 	}
 
 	public StepComponent(Step step) {
+		setButton(new Button("-"));
 		step_number = new TextField(step.getStepNumber());
 		actions = new HTMLEditor();
 		actions.setHtmlText(step.getActions());
@@ -61,5 +65,13 @@ public class StepComponent {
 
 	public void setExecutionType(TextField execution_type) {
 		this.execution_type = execution_type;
+	}
+
+	public void setButton(Button button) {
+		this.button = button;
+	}
+
+	public Button getButton() {
+		return button;
 	}
 }

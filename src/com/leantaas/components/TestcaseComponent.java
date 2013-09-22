@@ -1,11 +1,13 @@
 package com.leantaas.components;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.web.HTMLEditor;
 
 import com.leantaas.beans.Testcase;
 
 public class TestcaseComponent {
+	private Button button;
 	private TextField internalid;
 	private TextField name;
 	private TextField node_order;
@@ -18,6 +20,7 @@ public class TestcaseComponent {
 	private StepsComponent steps;
 
 	public TestcaseComponent() {
+		setButton(new Button("-"));
 		internalid = new TextField();
 		name = new TextField();
 		node_order = new TextField();
@@ -32,6 +35,7 @@ public class TestcaseComponent {
 	}
 
 	public TestcaseComponent(Testcase testcase) {
+		setButton(new Button("-"));
 		internalid = new TextField(testcase.getInternalid());
 		name = new TextField(testcase.getName());
 		node_order = new TextField(testcase.getNodeOrder());
@@ -124,5 +128,13 @@ public class TestcaseComponent {
 
 	public void setSteps(StepsComponent steps) {
 		this.steps = steps;
+	}
+
+	public void setButton(Button button) {
+		this.button = button;
+	}
+
+	public Button getButton() {
+		return button;
 	}
 }
