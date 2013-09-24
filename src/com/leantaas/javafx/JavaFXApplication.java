@@ -43,15 +43,16 @@ import com.leantaas.components.TestsuiteComponent;
 import com.leantaas.xmlhelpers.XMLReader;
 
 public class JavaFXApplication extends Application {
-	private final Logger LOGGER = Logger.getLogger(JavaFXApplication.class.getName());
-	private AlertDialog dialog;
-	private File file;
-	private ObjectProperty<TitledPane> draggingTab;
+	private final Logger LOGGER = Logger.getLogger(JavaFXApplication.class
+			.getName());
 	private static final String TITLEDPANE_DRAG_KEY = "titledpane";
+	private ObjectProperty<TitledPane> draggingTab;
 	private TestsuiteComponent component;
 	private Testsuite testsuite;
 	private VBox testsuiteVBox;
 	private VBox testcaseVBox;
+	private AlertDialog dialog;
+	private File file;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -59,14 +60,12 @@ public class JavaFXApplication extends Application {
 
 	@Override
 	public void start(final Stage primaryStage) {
-		testcaseVBox = new VBox();
-		draggingTab = new SimpleObjectProperty<TitledPane>();
 		Button chooseXml = new Button("Choose XML File");
-		primaryStage.setTitle("XML Editor");
 		VBox chooseXmlVbox = new VBox();
 		chooseXmlVbox.getChildren().add(chooseXml);
 		chooseXmlVbox.setAlignment(Pos.CENTER);
-		primaryStage.setScene(new Scene(chooseXmlVbox, 890, 570));
+		primaryStage.setTitle("XML Editor");
+		primaryStage.setScene(new Scene(chooseXmlVbox, 890, 770));
 		primaryStage.show();
 		chooseXml.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -79,7 +78,7 @@ public class JavaFXApplication extends Application {
 				try {
 					testsuite = XMLReader.getObjectFromXml(file);
 					VBox vbox = createTestsuite(testsuite);
-					primaryStage.setScene(new Scene(vbox, 890, 570));
+					primaryStage.setScene(new Scene(vbox, 890, 770));
 					primaryStage.show();
 					dialog = new AlertDialog(primaryStage,
 							"Changes are written to XML file");
@@ -91,8 +90,10 @@ public class JavaFXApplication extends Application {
 	}
 
 	private VBox createTestsuite(final Testsuite testsuite) {
+		testcaseVBox = new VBox();
+		draggingTab = new SimpleObjectProperty<TitledPane>();
 		component = new TestsuiteComponent(testsuite);
-		CustomGridPane grid = createTestsuiteFields(component);
+		CustomGridPane grid = createTestsuiteFields();
 		testsuiteVBox = new VBox();
 		testsuiteVBox.getChildren().add(grid);
 		for (int i = 0; i < testsuite.getTestcase().size(); i++) {
@@ -100,22 +101,22 @@ public class JavaFXApplication extends Application {
 					.getTestcase().get(i));
 		}
 		testsuiteVBox.getChildren().add(testcaseVBox);
-		createTestcaseAddButton(testsuite, component, testsuiteVBox);
+		createTestcaseAddButton(testsuiteVBox);
 		ScrollPane scrollpane = new ScrollPane();
 		scrollpane.setContent(testsuiteVBox);
 		scrollpane.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
-		scrollpane.setMinSize(880, 500);
+		scrollpane.setMinSize(880, 700);
 		Label testsuiteLabel = new Label("Testsuite");
 		final CustomTitledPane titledPane = new CustomTitledPane(scrollpane,
 				testsuiteLabel, component.getButton(), 760);
-		HBox hbox = createSubmitButton(testsuite, component);
+		HBox hbox = createSubmitButton();
 		final VBox vbox = new VBox();
 		vbox.getChildren().add(titledPane);
 		vbox.getChildren().add(hbox);
 		return vbox;
 	}
 
-	private CustomGridPane createTestsuiteFields(TestsuiteComponent component) {
+	private CustomGridPane createTestsuiteFields() {
 		CustomGridPane grid = new CustomGridPane();
 		grid.add(new Label("name:"), 0, 0);
 		grid.add(component.getName(), 1, 0);
@@ -126,8 +127,7 @@ public class JavaFXApplication extends Application {
 		return grid;
 	}
 
-	private void createTestcaseAddButton(final Testsuite testsuite,
-			final TestsuiteComponent component, final VBox testsuiteVBox) {
+	private void createTestcaseAddButton(final VBox testsuiteVBox) {
 		Button testcaseAddButtton = component.getButton();
 		testcaseAddButtton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -141,14 +141,13 @@ public class JavaFXApplication extends Application {
 		});
 	}
 
-	private HBox createSubmitButton(final Testsuite testsuite,
-			final TestsuiteComponent component) {
+	private HBox createSubmitButton() {
 		HBox hbox = new HBox();
 		Button button = new Button("Submit");
 		button.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				JavaFXApplication.this.saveTextFieldsData(testsuite, component);
+				JavaFXApplication.this.saveTextFieldsData();
 			}
 		});
 		HBox.setMargin(button, new Insets(10));
@@ -157,34 +156,32 @@ public class JavaFXApplication extends Application {
 		return hbox;
 	}
 
-	private void saveTextFieldsData(Testsuite testsuite,
-			TestsuiteComponent testsuiteComponent) {
-		testsuite.setName(testsuiteComponent.getName().getText().toString());
-		testsuite.setNodeOrder(testsuiteComponent.getNodeOrder().getText()
-				.toString());
-		testsuite.setDetails(testsuiteComponent.getDetails().getText()
-				.toString());
+	private void saveTextFieldsData() {
+		testsuite.setName(component.getName().getText().toString());
+		testsuite.setNodeOrder(component.getNodeOrder().getText().toString());
+		testsuite.setDetails(component.getDetails().getText().toString());
 		for (int i = 0; i < testsuite.getTestcase().size(); i++) {
 			Testcase testcase = testsuite.getTestcase().get(i);
-			TestcaseComponent component = testsuiteComponent.getTestcase().get(
-					i);
-			testcase.setExecutionType(component.getExecutionType().getText()
+			TestcaseComponent tescomponent = component.getTestcase().get(i);
+			testcase.setExecutionType(tescomponent.getExecutionType().getText()
 					.toString());
-			testcase.setExternalid(component.getExternalid().getText()
+			testcase.setExternalid(tescomponent.getExternalid().getText()
 					.toString());
-			testcase.setImportance(component.getImportance().getText()
+			testcase.setImportance(tescomponent.getImportance().getText()
 					.toString());
-			testcase.setInternalid(component.getInternalid().getText()
+			testcase.setInternalid(tescomponent.getInternalid().getText()
 					.toString());
-			testcase.setName(component.getName().getText().toString());
-			testcase.setNodeOrder(component.getNodeOrder().getText().toString());
-			testcase.setPreconditions(component.getPreconditions().getText()
+			testcase.setName(tescomponent.getName().getText().toString());
+			testcase.setNodeOrder(tescomponent.getNodeOrder().getText()
 					.toString());
-			testcase.setSummary(component.getSummary().getHtmlText().toString());
-			testcase.setVersion(component.getVersion().getText().toString());
+			testcase.setPreconditions(tescomponent.getPreconditions().getText()
+					.toString());
+			testcase.setSummary(tescomponent.getSummary().getHtmlText()
+					.toString());
+			testcase.setVersion(tescomponent.getVersion().getText().toString());
 			for (int j = 0; j < testcase.getSteps().getStep().size(); j++) {
 				Step step = testcase.getSteps().getStep().get(j);
-				StepComponent stepComponent = component.getSteps().getStep()
+				StepComponent stepComponent = tescomponent.getSteps().getStep()
 						.get(j);
 				step.setActions(stepComponent.getActions().getHtmlText()
 						.toString());
@@ -216,12 +213,13 @@ public class JavaFXApplication extends Application {
 				testcaseComponent.getSteps().getButton(), 750);
 		stepsVBox.getChildren().add(stepPane);
 		VBox.setMargin(testcaseVBox, new Insets(5));
-		final TitledPane titledPane = new TitledPane("Testcase: "+testcase.getName(), stepsVBox);
-		setEventHandler(titledPane);
+		final TitledPane titledPane = new TitledPane("Testcase: "
+				+ testcase.getName(), stepsVBox);
+		setTestcaseDragEvent(titledPane);
 		testcaseVBox.getChildren().add(titledPane);
 	}
 
-	private void setEventHandler(final TitledPane titledPane) {
+	private void setDragEvent(final TitledPane titledPane) {
 		titledPane.setOnDragOver(new EventHandler<DragEvent>() {
 			@Override
 			public void handle(DragEvent event) {
@@ -234,6 +232,22 @@ public class JavaFXApplication extends Application {
 				}
 			}
 		});
+		titledPane.setOnDragDetected(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				Dragboard dragboard = titledPane
+						.startDragAndDrop(TransferMode.MOVE);
+				ClipboardContent clipboardContent = new ClipboardContent();
+				clipboardContent.putString(TITLEDPANE_DRAG_KEY);
+				dragboard.setContent(clipboardContent);
+				draggingTab.set(titledPane);
+				event.consume();
+			}
+		});
+	}
+
+	private void setTestcaseDragEvent(final TitledPane titledPane) {
+		setDragEvent(titledPane);
 		titledPane.setOnDragDropped(new EventHandler<DragEvent>() {
 			public void handle(final DragEvent event) {
 				Dragboard dragBoard = event.getDragboard();
@@ -243,37 +257,35 @@ public class JavaFXApplication extends Application {
 					int sourceIndex = parent.getChildren().indexOf(source);
 					int targetIndex = parent.getChildren().indexOf(titledPane);
 					ArrayList<Testcase> testcases = testsuite.getTestcase();
-					ArrayList<TestcaseComponent> testcaseComponents = component.getTestcase();
+					ArrayList<TestcaseComponent> testcaseComponents = component
+							.getTestcase();
 					if (sourceIndex < targetIndex) {
-						Collections.rotate(testcases.subList(sourceIndex, targetIndex + 1), -1);
-						Collections.rotate(testcaseComponents.subList(sourceIndex, targetIndex + 1), -1);
+						Collections.rotate(
+								testcases.subList(sourceIndex, targetIndex + 1),
+								-1);
+						Collections.rotate(testcaseComponents.subList(
+								sourceIndex, targetIndex + 1), -1);
 					} else {
-						Collections.rotate(testcases.subList(targetIndex, sourceIndex + 1), 1);
-						Collections.rotate(testcaseComponents.subList(targetIndex, sourceIndex + 1), 1);
+						Collections.rotate(
+								testcases.subList(targetIndex, sourceIndex + 1),
+								1);
+						Collections.rotate(testcaseComponents.subList(
+								targetIndex, sourceIndex + 1), 1);
 					}
 					testsuite.setTestcase(testcases);
 					component.setTestcase(testcaseComponents);
 					List<Node> nodes = new ArrayList<Node>(parent.getChildren());
 					if (sourceIndex < targetIndex) {
-						Collections.rotate(nodes.subList(sourceIndex, targetIndex + 1), -1);
+						Collections.rotate(
+								nodes.subList(sourceIndex, targetIndex + 1), -1);
 					} else {
-						Collections.rotate(nodes.subList(targetIndex, sourceIndex + 1), 1);
+						Collections.rotate(
+								nodes.subList(targetIndex, sourceIndex + 1), 1);
 					}
 					parent.getChildren().clear();
 					parent.getChildren().addAll(nodes);
 				}
 				event.setDropCompleted(true);
-				event.consume();
-			}
-		});
-		titledPane.setOnDragDetected(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				Dragboard dragboard = titledPane.startDragAndDrop(TransferMode.MOVE);
-				ClipboardContent clipboardContent = new ClipboardContent();
-				clipboardContent.putString(TITLEDPANE_DRAG_KEY);
-				dragboard.setContent(clipboardContent);
-				draggingTab.set(titledPane);
 				event.consume();
 			}
 		});
@@ -302,13 +314,16 @@ public class JavaFXApplication extends Application {
 		return grid;
 	}
 
-	private VBox createStep(final Steps steps, final StepsComponent stepsComponent) {
+	private VBox createStep(final Steps steps,
+			final StepsComponent stepsComponent) {
 		final VBox stepVBox = new VBox();
 		for (int i = 0; i < steps.getStep().size(); i++) {
-			CustomGridPane grid=createStepFields(stepsComponent.getStep().get(i));
-			TitledPane titledPane = new TitledPane("Step: "+steps.getStep().get(i).getStepNumber(), grid);
+			CustomGridPane grid = createStepFields(stepsComponent.getStep()
+					.get(i));
+			TitledPane titledPane = new TitledPane("Step: "
+					+ steps.getStep().get(i).getStepNumber(), grid);
 			stepVBox.getChildren().add(titledPane);
-			setDragEvent(titledPane,steps,stepsComponent);
+			setStepDragEvent(titledPane, steps, stepsComponent);
 		}
 		Button stepAddButtton = stepsComponent.getButton();
 		stepAddButtton.setOnAction(new EventHandler<ActionEvent>() {
@@ -318,28 +333,18 @@ public class JavaFXApplication extends Application {
 				StepComponent stepComponent = new StepComponent();
 				steps.addStep(step);
 				stepsComponent.addStep(stepComponent);
-				CustomGridPane grid=createStepFields(stepComponent);
+				CustomGridPane grid = createStepFields(stepComponent);
 				TitledPane titledPane = new TitledPane("Step: ", grid);
 				stepVBox.getChildren().add(titledPane);
-				setDragEvent(titledPane,steps,stepsComponent);
+				setStepDragEvent(titledPane, steps, stepsComponent);
 			}
 		});
 		return stepVBox;
 	}
 
-	private void setDragEvent(final TitledPane titledPane,final Steps steps,final StepsComponent stepsComponent) {
-		titledPane.setOnDragOver(new EventHandler<DragEvent>() {
-			@Override
-			public void handle(DragEvent event) {
-				final Dragboard dragboard = event.getDragboard();
-				if (dragboard.hasString()
-						&& TITLEDPANE_DRAG_KEY.equals(dragboard.getString())
-						&& draggingTab.get() != null) {
-					event.acceptTransferModes(TransferMode.MOVE);
-					event.consume();
-				}
-			}
-		});
+	private void setStepDragEvent(final TitledPane titledPane, final Steps steps,
+			final StepsComponent stepsComponent) {
+		setDragEvent(titledPane);
 		titledPane.setOnDragDropped(new EventHandler<DragEvent>() {
 			public void handle(final DragEvent event) {
 				Dragboard dragBoard = event.getDragboard();
@@ -349,37 +354,33 @@ public class JavaFXApplication extends Application {
 					int sourceIndex = parent.getChildren().indexOf(source);
 					int targetIndex = parent.getChildren().indexOf(titledPane);
 					ArrayList<Step> step = steps.getStep();
-					ArrayList<StepComponent> stepComponents = stepsComponent.getStep();
+					ArrayList<StepComponent> stepComponents = stepsComponent
+							.getStep();
 					if (sourceIndex < targetIndex) {
-						Collections.rotate(step.subList(sourceIndex, targetIndex + 1), -1);
-						Collections.rotate(stepComponents.subList(sourceIndex, targetIndex + 1), -1);
+						Collections.rotate(
+								step.subList(sourceIndex, targetIndex + 1), -1);
+						Collections.rotate(stepComponents.subList(sourceIndex,
+								targetIndex + 1), -1);
 					} else {
-						Collections.rotate(step.subList(targetIndex, sourceIndex + 1), 1);
-						Collections.rotate(stepComponents.subList(targetIndex, sourceIndex + 1), 1);
+						Collections.rotate(
+								step.subList(targetIndex, sourceIndex + 1), 1);
+						Collections.rotate(stepComponents.subList(targetIndex,
+								sourceIndex + 1), 1);
 					}
 					steps.setStep(step);
 					stepsComponent.setStep(stepComponents);
 					List<Node> nodes = new ArrayList<Node>(parent.getChildren());
 					if (sourceIndex < targetIndex) {
-						Collections.rotate(nodes.subList(sourceIndex, targetIndex + 1), -1);
+						Collections.rotate(
+								nodes.subList(sourceIndex, targetIndex + 1), -1);
 					} else {
-						Collections.rotate(nodes.subList(targetIndex, sourceIndex + 1), 1);
+						Collections.rotate(
+								nodes.subList(targetIndex, sourceIndex + 1), 1);
 					}
 					parent.getChildren().clear();
 					parent.getChildren().addAll(nodes);
 				}
 				event.setDropCompleted(true);
-				event.consume();
-			}
-		});
-		titledPane.setOnDragDetected(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				Dragboard dragboard = titledPane.startDragAndDrop(TransferMode.MOVE);
-				ClipboardContent clipboardContent = new ClipboardContent();
-				clipboardContent.putString(TITLEDPANE_DRAG_KEY);
-				dragboard.setContent(clipboardContent);
-				draggingTab.set(titledPane);
 				event.consume();
 			}
 		});
